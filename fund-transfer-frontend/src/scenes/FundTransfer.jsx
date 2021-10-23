@@ -15,12 +15,13 @@ export default function FundTransfer() {
   const [amount, setAmount] = useState("");
   const [remarks, setRemarks] = useState("");
   const [dialog, setDialog] = useState();
+  console.log("dialog:::", dialog);
   const handleTransfer = () => {
     axios
-      .post("localhost:4000/api/transfer", {
+      .post("http://localhost:4000/api/transfer", {
         originAccount,
         destinationAccount: account,
-        amount,
+        amount: +amount,
         remarks,
       })
       .then((data) => {
